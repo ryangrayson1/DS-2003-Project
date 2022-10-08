@@ -6,25 +6,45 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+### Research Question
+Is there a difference between the overall trend and consistency of grades affected by alcohol for math as opposed to portuguese?
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r echo=FALSE}
+# load packages
+require(tidyverse)
+require(gdata)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# read in datasets
+math <- read.csv("Maths.csv")
+portuguese <- read.csv("Portuguese.csv")
 
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+```{r echo=FALSE}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+head(math)
+
+# add mean and standard error for both datasets on the final grades, grouped by weekday alcohol consumption
+math_walc_se <- math %>% group_by(Walc) %>% summarize(mean_g3=mean(G3), sd_g3=sd(G3), 
+                N_N=n(), se=sd_g3/sqrt(N_N), upper_limit=mean_g3+se, lower_limit=mean_g3-se) 
+
+port_walc_se <- portuguese %>% group_by(Walc) %>% summarize(mean_g3=mean(G3), sd_g3=sd(G3), 
+                N_N=n(), se=sd_g3/sqrt(N_N), upper_limit=mean_g3+se, lower_limit=mean_g3-se)
+
+# join the data
+alc_study <- combine(math_walc_se, port_walc_se)
+  
+ggplot(alc_study, aes(x=Walc, y=mean_g3, fill=source)) + 
+  geom_bar(stat="identity", position="dodge2") +
+  geom_errorbar(aes(ymin=lower_limit, ymax=upper_limit), width = .3, position=position_dodge(width = .9)) + 
+  theme_bw() + theme(aspect.ratio = .8) + labs(x = "Alcohol Consumption (1 = very low to 5 = very high)",
+      y = "Average Final Grade", fill = "Subject", title="Average Grade vs. Alcohol Consumption for Portuguese High School Students") + 
+  scale_fill_discrete(labels=c("Math", "Portuguese"))
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
