@@ -135,7 +135,7 @@ In conclusion, this dataset suggests that Portuguese grades are more likely to b
 
 ## Question 2
 ### What is the relationship between weekend drinking and total study time for math students and does this differ for males and females?
-**Hypothesis:** We hypothesize that higher weekend alcohol consumption will correlate with lower average total study time, but we do not expect to see a significant difference in the magnitude of correlation between males and females. 
+**Hypothesis:** We hypothesize that higher weekend alcohol consumption will correlate with lower average total study time, but we do not expect to see a significant difference in the magnitude of correlation between males and females. This assumes that a higher level of alcohol consumption will generally lead to students spending less time studying, causing the negative relationship we hypothesize. Women in general feel the effects of drinking more quickly than men due to biological differences. However, the variable measuring weekend alcohol consumption is a qualitative level and not a quantity, so we expect men and women who report the same level of consumption to experience essentially the same negative effect on their study habits.
 
 ```{r}
 #preparing the data
@@ -165,7 +165,6 @@ Time Spent Studying Math")+
 
 ### Conclusion for Question 2
 
-**need to finish this part still**
 
 
 
