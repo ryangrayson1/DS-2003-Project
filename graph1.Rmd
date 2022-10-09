@@ -9,14 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-### Research Question
+## Research Question
 Is there a significant difference in the relationship between final grades and weekend alcohol consumption for math compared to Portuguese?
 
 ## Hypothesis
 We hypothesize that the correlation between final Portuguese grades and alcohol consumption will be slightly stronger than the correlation between math grades and alcohol consumption (and we anticipate a negative correlation for both). Some studies have shown that genetics play a large role in math ability, whereas practice and effort often play a larger role in language ability. Assuming that greater alcohol consumption will typically lead to less time spent on academics, our hypothesis follows that the Portuguese grades would be more heavily hindered by high alcohol consumption.
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 # load packages
 require(tidyverse)
 require(gdata)
@@ -28,7 +28,7 @@ portuguese <- read.csv("Portuguese.csv")
 ```
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, message=FALSE}
 
 # add mean and standard error for both datasets on the final grades, grouped by weekday alcohol consumption
 math_walc_se <- math %>% group_by(Walc) %>% summarize(mean_g3=mean(G3), sd_g3=sd(G3), 
@@ -56,12 +56,18 @@ alc_plot
 
 ```
 
-### Analysis
+## Analysis
 
-This bar chart helps us visualize the trends in grades for Math and Portuguese class for different levels of alcohol usage. Each bar contains the mean final grade for the specified subject and level of alcohol usage. We've also calculated the standard error for each, which is show by the error bars on each data point. Here the grading scale used is arbitrary, since we are simply looking for trends. The axis is set at 0 to maintain consistency and to avoid magnifying trends for no good reason. The reason we chose a bar chart for this graph was because, while the alcohol consumption is a discrete scale, it is still a categorical variable as there are only 5 levels.
+This bar chart helps us visualize the trends in grades for Math and Portuguese class for different levels of alcohol usage. Each bar contains the mean final grade for the specified subject and level of alcohol usage. We've also calculated the standard error for each, which is show by the error bars on each data point. Here the grading scale used is arbitrary, since we are simply looking for trends. The axis is set at 0 to maintain consistency and to avoid magnifying trends for no good reason. The reason we chose a bar chart for this graph was because, while the alcohol consumption is a discrete scale, it is still a categorical variable as there are only 5 levels.   
+
+
 There are several important details of this graph to take note of while attempting to answer our research question. 
-Let's first look at the Math grades in red. As alcohol consumption increases, there is perhaps a slight overall downward trend in grades, however it is very subtle and the means jump up and down. This is a bit surprising, however as we mentioned in our hypothesis, math ability is typically highly genetic, so it makes sense that alcohol usage, which typically results in lower study time, would have less, but still some, of an effect on math grades. We can also see that for a very high alcohol consumption level of 5, the standard error is much larger than it is for the other levels. This is interesting to note, as it says something about how heavy alcohol usage affects different people differently.
-Looking at the Portuguese grades, a clear negative correlation is evident, and with much lower standard error for each bar than for that of math, we can be more confident in this trend. For language subjects, effort put in is larger factor than for math because the coursework is often more memorization-based. For example, if there is a vocabulary quiz or an essay to write on a class reading, if one has not put in the time to study the vocab or do the reading, they simply cannot succeed. However for math, there is some level of intuition that could allow students to succeed without having put in the time to study or pay attention. Thus, the stronger downward trend for Portuguese grades makes some sense. It's also helpful to note that with an alcohol consumption of 2, there is only a very slight dropoff in grades as opposed to the first level, and the error bars are very much overlapping. However, beyond that there is as steeper dropoff and little overlap in error bars from one level to the next, further reinforcing the trend we see.
+Let's first look at the Math grades in red. As alcohol consumption increases, there is perhaps a slight overall downward trend in grades, however it is very subtle and the means jump up and down. This is a bit surprising, however as we mentioned in our hypothesis, math ability is typically highly genetic, so it makes sense that alcohol usage, which typically results in lower study time, would have less, but still some, of an effect on math grades. We can also see that for a very high alcohol consumption level of 5, the standard error is much larger than it is for the other levels. This is interesting to note, as it says something about how heavy alcohol usage affects different people differently.   
+
+
+Looking at the Portuguese grades, a clear negative correlation is evident, and with much lower standard error for each bar than for that of math, we can be more confident in this trend. For language subjects, effort put in is larger factor than for math because the coursework is often more memorization-based. For example, if there is a vocabulary quiz or an essay to write on a class reading, if one has not put in the time to study the vocab or do the reading, they simply cannot succeed. However for math, there is some level of intuition that could allow students to succeed without having put in the time to study or pay attention. Thus, the stronger downward trend for Portuguese grades makes some sense. It's also helpful to note that with an alcohol consumption of 2, there is only a very slight dropoff in grades as opposed to the first level, and the error bars are very much overlapping. However, beyond that there is as steeper dropoff and little overlap in error bars from one level to the next, further reinforcing the trend we see.   
+
+
 In conclusion, this dataset suggests that Portuguese grades are more likely to be affected by alcohol consumption than math grades for Portuguese high school students.
 
 
