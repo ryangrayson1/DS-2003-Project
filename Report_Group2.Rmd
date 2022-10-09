@@ -8,7 +8,7 @@ output:
 ---
 # Introduction
 ## Background Information
-For our midterm project, we chose to analyze a dataset found on Kaggle titled "Alcohol Effects on Study." This was a large dataset comprising of two separate csv files with 33 different variables each. The data in these files were collected from two Portuguese hight schools with the goal of predicting student performance in classes. The data was collected from students in math and Portuguese courses and the variables included the students grades, alcohol consumption patterns, and various other social, dempgraphic, and school-related factors. The data was analyzed in a paper by Cortez and Silva in 2008. A link to this paper is below. 
+For our midterm project, we chose to analyze a dataset found on Kaggle titled "Alcohol Effects on Study." This was a large dataset comprising of two separate csv files with 33 different variables each. The data in these files were collected from two Portuguese high schools with the goal of predicting student performance in classes. The data was collected from students in math and Portuguese courses and the variables included the students grades, alcohol consumption patterns, and various other social, dempgraphic, and school-related factors. The data was analyzed in a paper by Cortez and Silva in 2008. A link to this paper is below. 
 
 [Kaggle](https://www.kaggle.com/datasets/08163f86754da93458b7dfb3e1c80258069edd817a00db655f3ccc3da37c87b5?resource=download&select=Maths.csv)
 
@@ -155,7 +155,7 @@ ggplot(MathData, aes(x = Walc, y = studytime, color = sex))+
        geom_smooth(method = "lm", se = TRUE)+
        geom_jitter()+
        scale_color_manual(breaks = c("F", "M"), 
-                       values=c("orangered4", "mediumseagreen"))+
+                       values=c("salmon", "darkturquoise"))+
        labs(x= "Weekend Alcohol Consumption (1 = very low to 5 = very high)", y = "Study Time (hours per week)", title = "Relationship between Weekend Alcohol Consumption and 
 Time Spent Studying Math")+
        theme_bw() + 
