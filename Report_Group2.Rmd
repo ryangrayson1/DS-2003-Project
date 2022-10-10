@@ -134,7 +134,7 @@ In conclusion, this dataset suggests that Portuguese grades are more likely to b
 
 
 ## Question 2
-### What is the relationship between weekend drinking and total study time for math students and does this differ for males and females?
+### What is the relationship between weekend drinking and total study time for math students and does this differ significantly for males and females?
 **Hypothesis:** We hypothesize that higher weekend alcohol consumption will correlate with lower average total study time, but we do not expect to see a significant difference in the magnitude of correlation between males and females. This assumes that a higher level of alcohol consumption will generally lead to students spending less time studying, causing the negative relationship we hypothesize. Women in general feel the effects of drinking more quickly than men due to biological differences. However, the variable measuring weekend alcohol consumption is a qualitative level and not a quantity, so we expect men and women who report the same level of consumption to experience essentially the same negative effect on their study habits.
 
 ```{r}
@@ -165,7 +165,12 @@ Time Spent Studying Math")+
 
 ### Conclusion for Question 2
 
+These side-by-side scatter charts with regression lines help us understand the relationship between weekend alcohol consumption and time spent studying for math as separated by sex. Both the study time and weekend alcohol variables are discrete, so we used geom_jitter to unstack the crowded points. The gray shaded areas around the regression lines visualize the 95% confidence interval. Since this question explicitly concerned the relationship between alcohol and study habits, we believed a scatter plot with a regression line would be best tailored to answering it.
 
+Of first note, both the female and male regression lines show that there is a negative relationship between alcohol consumption and time spent studying for math in this data as we predicted in our hypothesis. However, this relationship does not appear to be a particularly strong one, as shown by the gradual slope of the regression line. Furthermore, the confidence interval bands indicate that the relationship may be even less strong than the lines imply. A further review of the individual points reveals that there are male and female students who drink heavily and yet still spend plenty of their time studying. As we said above, heavy alcohol usage evidently affects people differently. These caveats necessarily temper the way in which we view the overall negative observed relationship.
 
+Second, while the graphs seem to indicate that female students at any given level of alcohol use tend to study more for math than male students, the slope of the lines, especially in light of the confidence bands, are not significantly different. This is in line with our prediction that the effects of alcohol use would be about the same across sexes. One caution is the visible lack of female students who drink at the 4 and 5 levels in comparison to male students, since it is possible that heavy drinking might acutely affect females due to biology. This is reflected in the particularly wide confidence band at the far right of the female student regression line. A more robust conclusion of insignificant difference might be drawn if the study included more female heavy drinkers.
+
+In conclusion, the graphs reveal a weak negative relationship between alcohol consumption and time spent studying for math for both female and male students whose magnitude does not significantly differ by sex.
 
 
