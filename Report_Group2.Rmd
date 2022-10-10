@@ -86,7 +86,7 @@ For our midterm project, we chose to analyze a dataset found on Kaggle titled "A
 ### Is there a difference between the overall trend and consistency of grades affected by alcohol for math as opposed to portuguese?
 **Hypothesis:** We hypothesize that the correlation between final Portuguese grades and alcohol consumption will be slightly stronger than the correlation between math grades and alcohol consumption (and we anticipate a negative correlation for both). Some studies have shown that genetics play a large role in math ability, whereas practice and effort often play a larger role in language ability. Assuming that greater alcohol consumption will typically lead to less time spent on academics, our hypothesis follows that the Portuguese grades would be more heavily correlated with higher alcohol consumption.
 
-```{r}
+```{r, message=FALSE}
 # load packages
 require(tidyverse)
 require(gdata)
